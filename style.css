@@ -59,11 +59,13 @@ button:hover {
   inset:0;
   pointer-events:none;
 }
+
 .heart {
   position:absolute;
   font-size:24px;
   animation:floatUp 1s linear forwards;
 }
+
 @keyframes floatUp {
   0%{opacity:1; transform: translateY(0) scale(1);}
   100%{opacity:0; transform: translateY(-120px) scale(1.5);}
