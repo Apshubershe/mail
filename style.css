@@ -1,0 +1,70 @@
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  font-family:'Nunito', sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(-45deg,#ff9a9e,#fecfef,#f6d365,#fda085);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.card {
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  width:360px;
+  text-align:center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.15);
+}
+
+input[type="email"] {
+  width:80%;
+  padding:12px;
+  margin-top:12px;
+  margin-bottom:20px;
+  border-radius:999px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+button {
+  padding:12px 22px;
+  border-radius:999px;
+  border:none;
+  background:#ff6f91;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background:#ff4f7b;
+}
+
+.hidden { display:none; }
+
+#hearts-container {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+.heart {
+  position:absolute;
+  font-size:24px;
+  animation:floatUp 1s linear forwards;
+}
+@keyframes floatUp {
+  0%{opacity:1; transform: translateY(0) scale(1);}
+  100%{opacity:0; transform: translateY(-120px) scale(1.5);}
+}
