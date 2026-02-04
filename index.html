@@ -3,19 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Отправь открытку 💌</title>
+
+<!-- Шрифт -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="card">
-  <h1>Хочешь получить открытку? 💌💖</h1>
-  <p>Введите свой email, чтобы я отправил тебе ссылку с валентинкой:</p>
+  <h1>Ева, хочешь получить открытку? 💌💖</h1>
+  <p>Введите свой email, чтобы я отправил ссылку с валентинкой:</p>
   
-  <input type="email" id="emailInput" placeholder="example@mail.com" required>
-  <button id="sendBtn">Отправить ✨</button>
+  <form id="emailForm" action="https://formspree.io/f/xqelrrwq" method="POST">
+    <input type="email" name="email" placeholder="example@mail.com" required>
+    <button type="submit">Отправить ✨</button>
+  </form>
   
   <p id="message" class="hidden"></p>
 </div>
