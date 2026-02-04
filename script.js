@@ -1,9 +1,34 @@
-const sendBtn = document.getElementById("sendBtn");
-const emailInput = document.getElementById("emailInput");
+const form = document.getElementById("emailForm");
 const message = document.getElementById("message");
 const heartsContainer = document.getElementById("hearts-container");
 
-function createHearts() {
+form.addEventListener("submit", (e)=>{
+  e.preventDefault(); // отключаем стандартное поведение формы
+
+  const data = new FormData(form);
+
+  fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if(response.ok){
+      message.innerText = "Спасибо! Ссылка отправлена 💌";
+      message.classList.remove("hidden");
+      form.reset();
+      createHearts();
+    } else {
+      message.innerText = "Ошибка! Попробуйте ещё раз 😢";
+      message.classList.remove("hidden");
+    }
+  }).catch(()=> {
+    message.innerText = "Ошибка сети 😢";
+    message.classList.remove("hidden");
+  });
+});
+
+// Функция создания салюта сердечек
+function createHearts(){
   for(let i=0;i<10;i++){
     const heart = document.createElement("div");
     heart.className="heart";
@@ -14,19 +39,3 @@ function createHearts() {
     setTimeout(()=>heart.remove(),1200);
   }
 }
-
-sendBtn.onclick = ()=>{
-  const email = emailInput.value.trim();
-  if(!email){
-    message.innerText = "Пожалуйста, введите email 📧";
-    message.classList.remove("hidden");
-    return;
-  }
-  
-  // Здесь можно отправлять email на сервер
-  message.innerText = `Спасибо! Ссылка отправлена на ${email} 💌`;
-  message.classList.remove("hidden");
-  
-  createHearts();
-  emailInput.value = "";
-};
