@@ -1,32 +1,92 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Отправь открытку 💌</title>
+  <meta charset="UTF-8" />
+  <title>Отправь открытку 💌</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
 
-<!-- Шрифт -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fecfef, #f6d365, #fda085);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    form {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+    input[type="email"], textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: 'Nunito', sans-serif;
+      resize: vertical;
+      box-sizing: border-box;
+      margin-top: 5px;
+      transition: border-color 0.3s;
+    }
+    input[type="email"]:focus, textarea:focus {
+      outline: none;
+      border-color: #ff6f91;
+      box-shadow: 0 0 8px rgba(255,111,145,0.5);
+    }
+    button {
+      width: 100%;
+      background: #ff6f91;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 14px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255,111,145,0.4);
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #ff4f7b;
+    }
+  </style>
 </head>
 <body>
-
-<div class="card">
-  <h1>Ева, хочешь получить открытку? 💌💖</h1>
-  <p>Введите свой email, чтобы я отправил ссылку с валентинкой:</p>
-  
-  <form id="emailForm" action="https://formspree.io/f/xqelrrwq" method="POST">
-    <input type="email" name="email" placeholder="example@mail.com" required>
-    <button type="submit">Отправить ✨</button>
+  <form action="https://formspree.io/f/xqelrrwq" method="POST">
+    <label>
+      Твоя почта:
+      <input type="email" name="email" required placeholder="example@mail.com" />
+    </label>
+    <label>
+      Твоё сообщение:
+      <textarea name="message" rows="4" placeholder="Напиши что-нибудь приятное..."></textarea>
+    </label>
+    <button type="submit">Отправить</button>
   </form>
-  
-  <p id="message" class="hidden"></p>
-</div>
-
-<div id="hearts-container"></div>
-
-<script src="script.js"></script>
 </body>
 </html>
